@@ -1,13 +1,14 @@
 from config import MOTIONS, RULES, MOTION_REVERSE, score_board
 from random import choice
+from utils import time_logger
 
 
 def get_user_select():
-    user_selection = input("Enter your select...")
-    if user_selection not in MOTIONS.keys():
-        get_user_select()
-    return MOTIONS[user_selection]
-
+    user_selection = input("Enter your select between `r`,`s` and `p`... ")
+    if user_selection in MOTIONS.keys():
+        return MOTIONS[user_selection]
+    get_user_select()
+    
 
 def get_system_select():
     key = choice(list(MOTIONS.keys()))
@@ -22,8 +23,9 @@ def update_score_board(result):
 
     return score_board
 
-
+# @time_logger
 def match():
+    
     results = {
         'user': 0,
         'system': 0,
