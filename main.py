@@ -23,7 +23,7 @@ def update_score_board(result):
 
     return score_board
 
-# @time_logger
+@time_logger
 def match():
     
     results = {
