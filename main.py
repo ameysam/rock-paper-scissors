@@ -5,9 +5,9 @@ from utils import time_logger
 
 def get_user_select():
     user_selection = input("Enter your select between `r`,`s` and `p`... ")
-    if user_selection in MOTIONS.keys():
-        return MOTIONS[user_selection]
-    get_user_select()
+    if user_selection not in MOTIONS.keys():
+        return get_user_select()
+    return MOTIONS[user_selection]
     
 
 def get_system_select():
@@ -23,8 +23,8 @@ def update_score_board(result):
 
     return score_board
 
-@time_logger
-def match():
+
+def play():
     
     results = {
         'user': 0,
@@ -57,10 +57,12 @@ def match():
         update_score_board(results)
         continue_match = input("The match is finished; Do you want to continue? (y/n)")
         if continue_match == 'y':
-            match()
+            play()
 
-
+@time_logger
+def call_play():
+    play()
 
 if __name__ == "__main__":
-    match()
+    call_play()
     print(score_board)
