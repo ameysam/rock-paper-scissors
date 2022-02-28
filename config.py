@@ -17,9 +17,9 @@ score_board = {
     'system': 0,
 }
 
-RULES_ = {
-    ('r', 'p'): 'p',
-    ('r', 's'): 'r',
-    ('p', 's'): 's',
-}
+# RULES_RESULT = {
+#     ('r', 'p'): 'p',
+#     ('r', 's'): 'r',
+#     ('p', 's'): 's',
+# }
 
