@@ -42,19 +42,26 @@ def play():
         system_select = MOTION_REVERSE[match_tuple[-1]]
         
         if len(match) == 1:
-            result_msg = (f"User:`{user_select}` and System:`{system_select}` and Result is Equal")
+            result_msg = (f"You:`{user_select}`, System:`{system_select}` => Equal")
         else:
             winner_select = RULES[sum(match)]
             if user_select == winner_select:
                 results['user'] += 1
-                result_msg = (f"User:`{user_select}` and System:`{system_select}` and User is winner...")
+                result_msg = (f"You:`{user_select}`, System:`{system_select}` => **User**")
             else:
                 results['system'] += 1
-                result_msg = (f"User:`{user_select}` and System:`{system_select}` and System is winner...")
+                result_msg = (f"You:`{user_select}`, System:`{system_select}` => **System**")
 
         print(result_msg)
     else:
         update_score_board(results)
+        print(20 * "=")
+        if results['user'] == 3:
+            print(f"User is Winner")
+        else:
+            print(f"System is Winner")
+        print(20 * "#", '\n')
+
         continue_match = input("The match is finished; Do you want to continue? (y/n)")
         if continue_match == 'y':
             play()
@@ -65,4 +72,4 @@ def call_play():
 
 if __name__ == "__main__":
     call_play()
-    print(score_board)
+    print(f"Finaly Score Board: {score_board}")
